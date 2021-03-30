@@ -1,0 +1,64 @@
+<section class="photoPost animeLeft">
+  <form (ngSubmit)="handleSubmit()" [formGroup]="form">
+    <div class="wrapper">
+      <label for="name" class="label">Name</label>
+      <input
+        class="input"
+        id="name"
+        name="name"
+        type="text"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="wrapper">
+      <label for="weight" class="label">Weight</label>
+      <input
+        class="input"
+        id="weight"
+        name="weight"
+        type="text"
+        formControlName="weight"
+      />
+    </div>
+
+    <div class="wrapper">
+      <label for="age" class="label">Age</label>
+      <input
+        class="input"
+        id="age"
+        name="age"
+        type="text"
+        formControlName="age"
+      />
+    </div>
+
+    <input
+      class="file"
+      id="img"
+      name="img"
+      type="file"
+      (change)="handleImgChange($event)"
+    />
+
+    <button
+      class="button"
+      *ngIf="loading === true; else elseBlock"
+      [disabled]="loading"
+    >
+      Enviar
+    </button>
+
+    <ng-template #elseBlock>
+      <button class="button" [disabled]="form.status !== 'VALID' || loading">
+        Enviar
+      </button>
+    </ng-template>
+  </form>
+  <div *ngIf="imgPreview && imgPreview.preview !== null">
+    <div
+      class="preview"
+      style="background-image: url('{{ imgPreview.preview }}');"
+    ></div>
+  </div>
+</section>

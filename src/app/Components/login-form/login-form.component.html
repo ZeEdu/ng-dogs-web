@@ -1,0 +1,61 @@
+<section class="animeLeft">
+  <h1 class="title">Login</h1>
+  <form class="form" [formGroup]="this.form" (ngSubmit)="handleSubmit()">
+    <div class="wrapper">
+      <label for="username" class="label">Username</label>
+      <input
+        class="input"
+        id="username"
+        name="username"
+        type="text"
+        formControlName="username"
+      />
+      <ng-container *ngIf="this.form.get('username') as field">
+        <p
+          class="error"
+          *ngIf="
+            (field.hasError('required') && !field.pristine) ||
+            (field.pristine && field.touched)
+          "
+        >
+          Preencha um valor
+        </p>
+      </ng-container>
+    </div>
+    <div class="wrapper">
+      <label for="password" class="label">Password</label>
+      <input
+        class="input"
+        id="password"
+        name="password"
+        type="password"
+        formControlName="password"
+      />
+      <ng-container *ngIf="this.form.get('password') as field">
+        <p
+          class="error"
+          *ngIf="
+            (field.hasError('required') && !field.pristine) ||
+            (field.pristine && field.touched)
+          "
+        >
+          Preencha um valor
+        </p>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="this.loading | async">
+      <button class="button" disabled>Carregando...</button>
+    </ng-container>
+
+    <ng-container *ngIf="!(this.loading | async)">
+      <button class="button">Entrar</button>
+    </ng-container>
+  </form>
+
+  <a class="perdeu" routerLink="/login/lost">Perdeu a senha?</a>
+  <div class="cadastro">
+    <h2 class="subtitle">Cadastre-se</h2>
+    <p>Ainda não possui conta? Cadastre-se no site</p>
+  </div>
+  <a href="" class="button" routerLink="/login/create">Cadastro</a>
+</section>

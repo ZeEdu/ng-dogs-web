@@ -1,0 +1,44 @@
+<button
+  *ngIf="mobile"
+  aria-label="Menu"
+  class="mobileButton"
+  [ngClass]="mobileMenu ? 'mobileButtonActive' : ''"
+  (click)="setMobileMenu()"
+></button>
+
+<nav
+  [ngClass]="[
+    mobile ? 'navMobile' : 'nav',
+    mobileMenu ? 'navMobileActive' : ''
+  ]"
+>
+  <a
+    routerLink="/account"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <div>
+      <img src="../../../assets/feed.svg" alt="" />
+    </div>
+    {{ mobileMenu ? "Minhas Fotos" : "" }}
+  </a>
+  <a routerLink="/account/stats" routerLinkActive="active">
+    <div>
+      <img src="../../../assets/estatisticas.svg" alt="" />
+    </div>
+    {{ mobileMenu ? "Estatísticas" : "" }}
+  </a>
+
+  <a routerLink="/account/post" routerLinkActive="active">
+    <div>
+      <img src="../../../assets/adicionar.svg" alt="" />
+    </div>
+    {{ mobileMenu ? "Adicinar nova foto" : "" }}
+  </a>
+  <button (click)="logout()">
+    <div>
+      <img src="../../../assets/sair.svg" />
+    </div>
+    {{ mobileMenu ? "Sair" : "" }}
+  </button>
+</nav>

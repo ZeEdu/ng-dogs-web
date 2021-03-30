@@ -1,0 +1,13 @@
+<header class="header">
+  <nav class="nav container">
+    <a class="logo" routerLink="/" aria-label="Dogs - Home">
+      <img src="../../../assets/dogs.svg" alt="" />
+    </a>
+    <ng-container *ngIf="UserContext.isLoggedIn | async">
+      <a class="login" routerLink="account">Minha Conta</a>
+    </ng-container>
+    <ng-container *ngIf="!(UserContext.isLoggedIn | async)">
+      <a class="login" routerLink="login">Login / Criar</a>
+    </ng-container>
+  </nav>
+</header>

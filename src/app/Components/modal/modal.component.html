@@ -1,0 +1,5 @@
+<div class="modal" (click)="handleClick($event)">
+  <ng-container *ngIf="modalState | async">
+    <app-photo-content [photo]="modal"></app-photo-content>
+  </ng-container>
+</div>

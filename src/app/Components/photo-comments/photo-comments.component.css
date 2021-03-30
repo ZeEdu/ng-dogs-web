@@ -1,0 +1,20 @@
+:host {
+  height: 23.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  height: 20rem;
+  overflow-y: auto;
+  word-break: break-word;
+  padding: 0 2rem;
+}
+ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+ul.single {
+  padding: 0;
+  flex-grow: 2;
+}

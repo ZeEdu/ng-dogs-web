@@ -1,0 +1,46 @@
+<ng-container *ngIf="photoContent">
+  <div class="photo" [ngClass]="single ? 'single' : ''">
+    <div class="img">
+      <app-image [src]="photoContent.src" [alt]="photoContent.title">
+      </app-image>
+    </div>
+    <div class="details">
+      <div>
+        <p class="author">
+          <ng-container
+            *ngIf="
+              (this.userContext.getUserInfo | async).username ===
+                photoContent.author;
+              else elseBlock
+            "
+          >
+            <app-photo-delete [photoId]="photoContent.id"></app-photo-delete>
+          </ng-container>
+          <ng-template #elseBlock>
+            <a (click)="navigate('/profile/', photoContent.author)">
+              @ {{ photoContent.author }}
+            </a>
+          </ng-template>
+
+          <span class="visualizacoes">{{ photoContent.acessos }}</span>
+        </p>
+        <h1 class="title">
+          <a (click)="navigate('/photo/', photoContent.id.toString())">{{
+            photoContent.title
+          }}</a>
+        </h1>
+        <ul class="attributes">
+          <li>{{ photoContent.peso }} kg</li>
+          <li>
+            {{ photoContent.idade }}
+            {{ +photoContent.idade === 1 ? "ano" : "anos" }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <app-photo-comments
+      [photoId]="photoContent.id"
+      [single]="single"
+    ></app-photo-comments>
+  </div>
+</ng-container>

@@ -1,0 +1,10 @@
+<section class="container mainContainer">
+  <app-modal *ngIf="modalState"></app-modal>
+  <app-feed-photos [photos]="photos"></app-feed-photos>
+  <button *ngIf="!isLoading && canLoadMore" class="button" (click)="loadMore()">
+    Load More
+  </button>
+  <p class="loadMoreAlert" *ngIf="!isLoading && !canLoadMore">
+    Nothing more to load
+  </p>
+</section>

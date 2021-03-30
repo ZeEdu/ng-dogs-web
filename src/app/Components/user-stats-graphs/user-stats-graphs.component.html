@@ -1,0 +1,29 @@
+<section class="graph animeLeft" *ngIf="totalAcessos">
+  <div class="total graphItem">
+    <p>Acessos: {{ totalAcessos }}</p>
+  </div>
+  <div class="graphItem">
+    <canvas
+      baseChart
+      [data]="pieChart.Data"
+      [labels]="pieChart.Labels"
+      [chartType]="pieChart.Type"
+      [options]="pieChart.Options"
+      [plugins]="pieChart.Plugins"
+      [legend]="pieChart.Legend"
+    >
+    </canvas>
+  </div>
+  <div class="graphItem">
+    <canvas
+      baseChart
+      [datasets]="barChart.data"
+      [labels]="barChart.labels"
+      [options]="barChart.options"
+      [plugins]="barChart.plugins"
+      [legend]="barChart.legend"
+      [chartType]="barChart.type"
+    >
+    </canvas>
+  </div>
+</section>

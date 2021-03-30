@@ -1,0 +1,13 @@
+<ul [ngClass]="single ? 'single' : ''" #elRef>
+  <li *ngFor="let comment of comments">
+    <b>{{ comment.comment_author }} </b> :
+    <span>{{ comment.comment_content }}</span>
+  </li>
+</ul>
+
+<ng-container *ngIf="userContextService.isLoggedIn | async">
+  <app-photo-comments-form
+    [photoId]="photoId"
+    [single]="single"
+  ></app-photo-comments-form>
+</ng-container>

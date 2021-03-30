@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <div *ngIf="skeleton" class="skeleton"></div>
+  <img
+    #imageTag
+    [src]="src"
+    [alt]="alt"
+    (load)="onLoad()"
+    class="img"
+    [ngClass]="skeleton ? '' : 'show'"
+  />
+</div>

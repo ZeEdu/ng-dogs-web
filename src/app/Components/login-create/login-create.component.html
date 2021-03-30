@@ -1,0 +1,85 @@
+<section class="animeLeft">
+  <h1 class="title">Cadastre-se</h1>
+  <form class="form" [formGroup]="this.form" (ngSubmit)="handleSubmit()">
+    <div class="wrapper">
+      <label for="username" class="label">Username</label>
+      <input
+        class="input"
+        id="username"
+        name="username"
+        type="text"
+        formControlName="username"
+      />
+      <ng-container *ngIf="this.form.get('username') as field">
+        <p
+          class="error"
+          *ngIf="
+            (field.hasError('required') && !field.pristine) ||
+            (field.pristine && field.touched)
+          "
+        >
+          Preencha um valor
+        </p>
+      </ng-container>
+    </div>
+    <div class="wrapper">
+      <label for="email" class="label">Email</label>
+      <input
+        class="input"
+        id="email"
+        name="email"
+        type="email"
+        formControlName="email"
+      />
+      <ng-container *ngIf="this.form.get('email') as field">
+        <p
+          class="error"
+          *ngIf="
+            (field.hasError('required') && !field.pristine) ||
+            (field.pristine && field.touched)
+          "
+        >
+          Preencha um valor
+        </p>
+
+        <p class="error" *ngIf="field.hasError('email') && field.touched">
+          Formato de email inválido
+        </p>
+      </ng-container>
+    </div>
+    <div class="wrapper">
+      <label for="password" class="label">Password</label>
+      <input
+        class="input"
+        id="password"
+        name="password"
+        type="password"
+        formControlName="password"
+      />
+      <ng-container *ngIf="this.form.get('password') as field">
+        <p
+          class="error"
+          *ngIf="
+            (field.hasError('required') && !field.pristine) ||
+            (field.pristine && field.touched)
+          "
+        >
+          Preencha um valor
+        </p>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="this.loading | async">
+      <button class="button" disabled>Carregando...</button>
+    </ng-container>
+
+    <ng-container *ngIf="!(this.loading | async)">
+      <button class="button" [disabled]="this.form.status !== 'VALID'">
+        Entrar
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="this.error | async">
+      <p style="color: #f31; margin: 1rem 0">{{ this.error | async }}</p>
+    </ng-container>
+  </form>
+</section>
