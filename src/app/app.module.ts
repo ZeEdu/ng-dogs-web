@@ -72,12 +72,12 @@ import { ChartsModule } from 'ng2-charts';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
     ChartsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
