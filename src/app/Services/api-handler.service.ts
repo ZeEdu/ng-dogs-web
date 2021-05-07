@@ -7,7 +7,8 @@ import { UserData } from '../Interfaces/user-data';
 import { UserLogin } from '../Interfaces/user-login';
 import { UserLoginResponse } from '../Interfaces/user-login-response';
 
-const baseUrl = 'http://localhost:10003/json';
+const baseUrl = 'https://dogsapi.origamid.dev/json';
+// const baseUrl = 'http://localhost:10003/json';
 
 @Injectable({
   providedIn: 'root',
